@@ -160,11 +160,13 @@ func present(config Config, store map[string]Card) map[string]Card {
 		text, _ := reader.ReadString('\n')
 		text = strings.Replace(text, "\n", "", 1)
 
-		if text == "q" {
+		if text == "qq" {
 			updateDB(config, store)
 			return newStore
 		}
 
+		// print the actual answer
+		fmt.Println(card.Target)
 		now := time.Now().Unix()
 
 		card.Reviews = append(card.Reviews, Review{
